@@ -1,0 +1,8 @@
+Dockerfile
+.idea/
+*.iml
+*.log
+
+#build/
+out/
+.gradle/
