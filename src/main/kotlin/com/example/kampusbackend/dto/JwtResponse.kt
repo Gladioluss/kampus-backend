@@ -6,6 +6,5 @@ import kotlinx.serialization.Serializable
 data class JwtResponse(
     val token: String,
 ) {
-
 	private val type: String = "Bearer"
 }
