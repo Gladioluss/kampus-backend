@@ -3,6 +3,7 @@ package com.example.kampusbackend.controller
 import com.example.kampusbackend.config.jwt.JwtUtils
 import com.example.kampusbackend.dto.JwtResponse
 import com.example.kampusbackend.dto.LoginRequest
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
@@ -19,13 +20,15 @@ class AuthController(
 	private val authenticationManager: AuthenticationManager,
 	private val jwtUtils: JwtUtils,
 ) {
+	@Value("\${user.username}")
+	private lateinit var username: String
 
 	@PostMapping("/login")
 	fun authUser(@RequestBody loginRequest: LoginRequest): ResponseEntity<JwtResponse> {
 
 		val authentication: Authentication = authenticationManager.authenticate(
 			UsernamePasswordAuthenticationToken(
-				loginRequest.username,
+				username,
 				loginRequest.password
 			)
 		)
