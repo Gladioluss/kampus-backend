@@ -12,9 +12,15 @@ data class StudentDto(
     var middleName: String? = null,
     @Serializable(LocalDateSerializer::class)
     var dateBirth: LocalDate? = null,
+    @Serializable(LocalDateSerializer::class)
+    var receiptDate: LocalDate? = null,
     var universityName: String? = null,
     var courseTitle: String? = null,
     var courseNumber: Int? = null,
+    var averageGrade: Double? = null,
+    var educationForm:  String? = null,
+    var trainingForm:   String? = null,
+    var localResident:  Boolean? = null,
 )
 
 fun StudentDto.toEntity() = StudentEntity(
@@ -22,7 +28,11 @@ fun StudentDto.toEntity() = StudentEntity(
     lastName = lastName,
     middleName = middleName,
     dateBirth = dateBirth,
+    receiptDate = receiptDate,
     universityName = universityName,
     courseTitle = courseTitle,
     courseNumber = courseNumber,
+    educationForm = educationForm,
+    trainingForm = trainingForm,
+    localResident = localResident,
 )

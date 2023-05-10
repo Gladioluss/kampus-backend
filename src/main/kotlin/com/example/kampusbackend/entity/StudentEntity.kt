@@ -25,6 +25,9 @@ class StudentEntity(
     @Column(name = "date_birth", nullable = true)
     var dateBirth: LocalDate? = null,
 
+    @Column(name = "receipt_date", nullable = true)
+    var receiptDate: LocalDate? = null,
+
     @Column(name = "university_name", nullable = true)
     var universityName: String? = null,
 
@@ -33,6 +36,18 @@ class StudentEntity(
 
     @Column(name = "course_number", nullable = true)
     var courseNumber: Int? = null,
+
+    @Column(name = "average_grade", nullable = true)
+    var averageGrade: Double? = null,
+
+    @Column(name = "education_form", nullable = true)
+    var educationForm:  String? = null,
+
+    @Column(name = "training_form", nullable = true)
+    var trainingForm:   String? = null,
+
+    @Column(name = "local_resident", nullable = true)
+    var localResident:  Boolean? = null,
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -43,7 +58,6 @@ class StudentEntity(
     }
 
     override fun hashCode(): Int = javaClass.hashCode()
-
     override fun toString(): String {
         return "StudentEntity(" +
                 "id=$id, " +
@@ -51,8 +65,14 @@ class StudentEntity(
                 "lastName=$lastName, " +
                 "middleName=$middleName, " +
                 "dateBirth=$dateBirth, " +
+                "receiptDate=$receiptDate, " +
                 "universityName=$universityName, " +
                 "courseTitle=$courseTitle, " +
-                "courseNumber=$courseNumber)"
+                "courseNumber=$courseNumber, " +
+                "averageGrade=$averageGrade, " +
+                "educationForm=$educationForm, " +
+                "trainingForm=$trainingForm, " +
+                "localResident=$localResident)"
     }
+
 }

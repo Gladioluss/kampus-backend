@@ -4,9 +4,17 @@ create TABLE ${flyway:defaultSchema}.students
     first_name      VARCHAR(255),
     last_name       VARCHAR(255),
     middle_name     VARCHAR(255),
-    date_birth      Date,
+    date_birth      DATE,
+    receipt_date    DATE,
     university_name VARCHAR(255),
     course_title    VARCHAR(255),
     course_number   INTEGER,
+    average_grade   DECIMAL(4),
+--    Форма образования очно/заочно
+    education_form  VARCHAR(255),
+--    Форма обучения бюджет/контракт
+    training_form   VARCHAR(255),
+    local_resident  BOOLEAN,
+
     CONSTRAINT pk_students PRIMARY KEY (students_id)
 );
