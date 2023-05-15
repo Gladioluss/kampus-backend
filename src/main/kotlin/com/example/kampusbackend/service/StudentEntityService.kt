@@ -9,20 +9,47 @@ import org.springframework.stereotype.Service
 
 @Service
 class StudentEntityService(
-    private val studentRepository: StudentRepository,
-){
+	private val studentRepository: StudentRepository,
+) {
 
-    fun getStudent(id : Long) : StudentEntity {
-        return studentRepository.findById(id).orElseThrow {
-            StudentNotFoundException("Student with id $id not found")
-        }
-    }
+	/**
+	 * Returns [StudentEntity] from the database by the incoming [id].
+	 * @param id unique identifier for the [StudentEntity]
+	 * @return [StudentEntity]
+	 * @throws [StudentNotFoundException] if nothing was found for the specified [id]
+	 */
+	fun getStudentById(id: Long): StudentEntity {
+		return studentRepository.findById(id).orElseThrow {
+			StudentNotFoundException("Student with id $id not found")
+		}
+	}
 
-    fun getAllStudents() : List<StudentEntity>{
-        return studentRepository.findAll()
-    }
+	/**
+	 * Return a list of all instances of type [StudentEntity] from the database.
+	 * @return a  List<[StudentEntity]>
+	 */
+	fun getAllStudents(): List<StudentEntity> {
+		return studentRepository.findAll()
+	}
 
-    fun save(studentEntity: StudentEntity) {
-        studentRepository.save(studentEntity)
-    }
+	fun getCountStudents(): Long {
+		return studentRepository.count()
+	}
+
+	fun getInfoUniversities(): Map<String, Int> {
+		val universities = studentRepository.getAllUniversities()
+		return universities.groupingBy { it }.eachCount()
+	}
+
+	fun getInfoEducationForm(): Map<String, Int> {
+		val universities = studentRepository.getAllEducationForm()
+		return universities.groupingBy { it }.eachCount()
+	}
+
+	/**
+	 * Save an object of type [StudentEntity] to the database.
+	 */
+	fun save(studentEntity: StudentEntity) {
+		studentRepository.save(studentEntity)
+	}
 }

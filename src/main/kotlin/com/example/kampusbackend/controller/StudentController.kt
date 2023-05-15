@@ -12,15 +12,29 @@ import org.springframework.web.bind.annotation.*
 class StudentController(
 	private val studentEntityService: StudentEntityService,
 ) {
-
 	@GetMapping("/getStudent/{studentId}")
-	fun getStudent(@PathVariable studentId: Long): StudentEntity {
-		return studentEntityService.getStudent(studentId)
+	fun getStudentById(@PathVariable studentId: Long): StudentEntity {
+		return studentEntityService.getStudentById(studentId)
 	}
 
 	@GetMapping("/getAllStudents")
 	fun getAllStudents(): List<StudentEntity> {
 		return studentEntityService.getAllStudents()
+	}
+
+	@GetMapping("/getCountStudents")
+	fun getCountStudents(): Long {
+		return studentEntityService.getCountStudents()
+	}
+
+	@GetMapping("/getInfoUniversities")
+	fun getInfoUniversities(): Map<String, Int> {
+		return studentEntityService.getInfoUniversities()
+	}
+
+	@GetMapping("/getInfoEducationForm")
+	fun getInfoEducationForm(): Map<String, Int> {
+		return studentEntityService.getInfoEducationForm()
 	}
 
 	@PostMapping("/saveStudent")

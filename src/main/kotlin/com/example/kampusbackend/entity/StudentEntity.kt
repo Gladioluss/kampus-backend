@@ -7,7 +7,7 @@ import java.time.LocalDate
 
 @Entity
 @Table(name = "students")
-class StudentEntity(
+open class StudentEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "students_id", nullable = false)
@@ -39,12 +39,12 @@ class StudentEntity(
 
     @Column(name = "average_grade", nullable = true)
     var averageGrade: Double? = null,
-
+    /** Form of study: full-time/part-time*/
+    @Column(name = "study_form", nullable = true)
+    var studyForm:  String? = null,
+    /** Form of education: budget/contract/targeted */
     @Column(name = "education_form", nullable = true)
-    var educationForm:  String? = null,
-
-    @Column(name = "training_form", nullable = true)
-    var trainingForm:   String? = null,
+    var educationForm:   String? = null,
 
     @Column(name = "local_resident", nullable = true)
     var localResident:  Boolean? = null,
@@ -53,7 +53,6 @@ class StudentEntity(
         if (this === other) return true
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
         other as StudentEntity
-
         return id != null && id == other.id
     }
 
@@ -70,8 +69,8 @@ class StudentEntity(
                 "courseTitle=$courseTitle, " +
                 "courseNumber=$courseNumber, " +
                 "averageGrade=$averageGrade, " +
+                "studyForm=$studyForm, " +
                 "educationForm=$educationForm, " +
-                "trainingForm=$trainingForm, " +
                 "localResident=$localResident)"
     }
 

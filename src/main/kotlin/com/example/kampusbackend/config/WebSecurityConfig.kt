@@ -38,6 +38,8 @@ class WebSecurityConfig(
             exceptionHandling { authenticationEntryPoint = unauthorizedHandler }
             authorizeRequests {
                 authorize("api/v1/auth/**", permitAll)
+                authorize("swagger-ui/**", permitAll)
+                authorize("v3/**", permitAll)
                 authorize(anyRequest, authenticated)
             }
             sessionManagement { sessionCreationPolicy = SessionCreationPolicy.STATELESS }

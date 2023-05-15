@@ -32,13 +32,15 @@ class AuthTokenFilter(
     ) {
         try {
             val jwt = parseJwt(request)
-            if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
-                val username: String = jwtUtils.getUserNameFromJwtToken(jwt)
-                val userDetails: UserDetails = customUserDetails.loadUserByUsername(username)
-                val authenticationToken =
-                    UsernamePasswordAuthenticationToken(userDetails, null, userDetails.authorities)
-                authenticationToken.details = WebAuthenticationDetailsSource().buildDetails(request)
-                SecurityContextHolder.getContext().authentication = authenticationToken
+            when {
+                jwt != null && jwtUtils.validateJwtToken(jwt) -> {
+                    val username: String = jwtUtils.getUserNameFromJwtToken(jwt)
+                    val userDetails: UserDetails = customUserDetails.loadUserByUsername(username)
+                    val authenticationToken =
+                        UsernamePasswordAuthenticationToken(userDetails, null, userDetails.authorities)
+                    authenticationToken.details = WebAuthenticationDetailsSource().buildDetails(request)
+                    SecurityContextHolder.getContext().authentication = authenticationToken
+                }
             }
         } catch (e: Exception) {
             logger.error{"Cannot set user authentication: ${e.message}"}
@@ -48,8 +50,11 @@ class AuthTokenFilter(
 
     private fun parseJwt(request: HttpServletRequest): String? {
         val headerAuth = request.getHeader("Authorization")
-        return if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
-            headerAuth.substring(7, headerAuth.length)
-        } else null
+        return when {
+            StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ") -> {
+                headerAuth.substring(7, headerAuth.length)
+            }
+            else -> null
+        }
     }
 }

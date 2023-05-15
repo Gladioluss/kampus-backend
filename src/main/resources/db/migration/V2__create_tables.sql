@@ -11,9 +11,9 @@ create TABLE ${flyway:defaultSchema}.students
     course_number   INTEGER,
     average_grade   DECIMAL(4),
 --    Форма образования очно/заочно
-    education_form  VARCHAR(255),
+    study_form  VARCHAR(255),
 --    Форма обучения бюджет/контракт
-    training_form   VARCHAR(255),
+    education_form   VARCHAR(255),
     local_resident  BOOLEAN,
 
     CONSTRAINT pk_students PRIMARY KEY (students_id)

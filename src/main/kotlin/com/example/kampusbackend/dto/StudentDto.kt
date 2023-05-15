@@ -18,8 +18,8 @@ data class StudentDto(
     var courseTitle: String? = null,
     var courseNumber: Int? = null,
     var averageGrade: Double? = null,
-    var educationForm:  String? = null,
-    var trainingForm:   String? = null,
+    var studyForm:  String? = null,
+    var educationForm:   String? = null,
     var localResident:  Boolean? = null,
 )
 
@@ -32,7 +32,7 @@ fun StudentDto.toEntity() = StudentEntity(
     universityName = universityName,
     courseTitle = courseTitle,
     courseNumber = courseNumber,
+    studyForm = studyForm,
     educationForm = educationForm,
-    trainingForm = trainingForm,
     localResident = localResident,
 )
