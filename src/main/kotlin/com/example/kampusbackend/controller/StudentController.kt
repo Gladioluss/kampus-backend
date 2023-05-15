@@ -37,6 +37,16 @@ class StudentController(
 		return studentEntityService.getInfoEducationForm()
 	}
 
+	@GetMapping("/getInfoHighEducation")
+	fun getInfoHighEducation(): Map<String, Int> {
+		return studentEntityService.getInfoHighEducation()
+	}
+
+	@GetMapping("/getInfoCourseTitle")
+	fun getInfoCourseTitle(): Map<String, Int> {
+		return studentEntityService.getInfoCourseTitle()
+	}
+
 	@PostMapping("/saveStudent")
 	fun saveStudent(@RequestBody studentDto: StudentDto): ResponseEntity<String> {
 		studentEntityService.save(studentDto.toEntity())

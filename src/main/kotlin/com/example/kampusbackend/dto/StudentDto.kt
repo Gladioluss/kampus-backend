@@ -20,6 +20,7 @@ data class StudentDto(
     var averageGrade: Double? = null,
     var studyForm:  String? = null,
     var educationForm:   String? = null,
+    var typeHighEducation: String? = null,
     var localResident:  Boolean? = null,
 )
 
@@ -34,5 +35,6 @@ fun StudentDto.toEntity() = StudentEntity(
     courseNumber = courseNumber,
     studyForm = studyForm,
     educationForm = educationForm,
+    typeHighEducation = typeHighEducation,
     localResident = localResident,
 )

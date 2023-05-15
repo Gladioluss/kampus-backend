@@ -13,4 +13,10 @@ interface StudentRepository : JpaRepository<StudentEntity, Long> {
 
     @Query("SELECT educationForm FROM StudentEntity")
     fun getAllEducationForm(): List<String>
+
+    @Query("SELECT typeHighEducation FROM StudentEntity")
+    fun getAllTypeHighEducation(): List<String>
+
+    @Query("SELECT courseTitle FROM StudentEntity")
+    fun getAllCourseTitle(): List<String>
 }
