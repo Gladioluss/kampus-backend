@@ -14,16 +14,13 @@ class StudentEntityService(
 	/**
 	 * Returns [StudentEntity] from the database by the incoming [id].
 	 * @param id unique identifier for the [StudentEntity]
-	 * @return [StudentEntity]
 	 * @throws [StudentNotFoundException] if nothing was found for the specified [id]
 	 */
 	fun getStudentById(id: Long): StudentEntity = studentRepository.findById(id).orElseThrow {
 		StudentNotFoundException("Student with id $id not found")
 	}
-
 	/**
 	 * Return a list of all instances of type [StudentEntity] from the database.
-	 * @return a  List<[StudentEntity]>
 	 */
 	fun getAllStudents(): List<StudentEntity> = studentRepository.findAll()
 

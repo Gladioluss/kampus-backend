@@ -12,6 +12,7 @@ insert into ${flyway:defaultSchema}.students values (
     'Очно',
     'Бюджет',
     'Бакалавриат',
+    true,
     true
 );
 
@@ -29,6 +30,7 @@ insert into ${flyway:defaultSchema}.students values (
     'Очно',
     'Бюджет',
     'Бакалавриат',
+    true,
     false
 );
 
@@ -46,6 +48,7 @@ insert into ${flyway:defaultSchema}.students values (
     'Очно',
     'Контракт',
     'Аспирантура',
+    true,
     true
 );
 
@@ -63,5 +66,6 @@ insert into ${flyway:defaultSchema}.students values (
     'Заочно',
     'Бюджет',
     'Специалитет',
+    false,
     false
 );

@@ -49,6 +49,9 @@ open class StudentEntity(
 	@Column(name = "type_high_education", nullable = true)
 	open var typeHighEducation: String? = null,
 
+	@Column(name = "stipend_availability", nullable = true)
+	open var stipendAvailability: Boolean? = null,
+
 	@Column(name = "local_resident", nullable = true)
 	open var localResident: Boolean? = null,
 ) {
@@ -75,6 +78,7 @@ open class StudentEntity(
 				"studyForm=$studyForm, " +
 				"educationForm=$educationForm, " +
 				"typeHighEducation=$typeHighEducation, " +
+				"stipendAvailability=$stipendAvailability, " +
 				"localResident=$localResident)"
 	}
 

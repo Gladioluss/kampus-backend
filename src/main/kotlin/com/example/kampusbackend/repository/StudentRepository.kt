@@ -19,4 +19,5 @@ interface StudentRepository : JpaRepository<StudentEntity, Long> {
 
     @Query("SELECT courseTitle FROM StudentEntity")
     fun getAllCourseTitle(): List<String>
+
 }
