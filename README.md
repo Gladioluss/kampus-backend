@@ -13,3 +13,9 @@ docker-compose up -d --build
 ```bash
 docker-compose up -d 
 ```
+
+### Swagger
+#### При запуске на localhost
+
+http://localhost:8080/swagger-ui/index.html#/
+

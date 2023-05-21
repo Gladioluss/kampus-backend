@@ -69,3 +69,8 @@ insert into ${flyway:defaultSchema}.students values (
     false,
     false
 );
+
+insert into ${flyway:defaultSchema}.dynamic_progress values (1, '2023-02-01', 17, 150151);
+insert into ${flyway:defaultSchema}.dynamic_progress values (2, '2023-03-01', 95, 150151868);
+insert into ${flyway:defaultSchema}.dynamic_progress values (3, '2023-04-01', 1793, 1986850151);
+insert into ${flyway:defaultSchema}.dynamic_progress values (4, '2023-05-01', 9450, 150986398542151);

@@ -4,6 +4,7 @@ plugins {
     id("org.springframework.boot") version "3.0.6"
     id("io.spring.dependency-management") version "1.1.0"
     kotlin("jvm") version "1.7.22"
+    kotlin("plugin.jpa") version "1.7.22"
     kotlin("plugin.spring") version "1.7.22"
 }
 
@@ -48,4 +49,8 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-
+allOpen {
+    annotation("jakarta.persistence.Entity")
+    annotation("jakarta.persistence.Embeddable")
+    annotation("jakarta.persistence.MappedSuperclass")
+}

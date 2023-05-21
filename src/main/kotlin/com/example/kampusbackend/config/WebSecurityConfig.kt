@@ -49,6 +49,7 @@ class WebSecurityConfig(
 			exceptionHandling { authenticationEntryPoint = unauthorizedHandler }
 			authorizeRequests {
 				authorize("api/v1/auth/**", permitAll)
+//				authorize("api/v1/api-docs/**", permitAll)
 				authorize("swagger-ui/**", permitAll)
 				authorize("v3/**", permitAll)
 				authorize(anyRequest, authenticated)

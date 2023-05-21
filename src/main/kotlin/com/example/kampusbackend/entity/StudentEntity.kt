@@ -7,53 +7,53 @@ import java.time.LocalDate
 
 @Entity
 @Table(name = "students")
-open class StudentEntity(
+class StudentEntity(
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "students_id", nullable = false)
-	open var id: Long? = null,
+	var id: Long? = null,
 
 	@Column(name = "first_name", nullable = true)
-	open var firstName: String? = null,
+	var firstName: String? = null,
 
 	@Column(name = "last_name", nullable = true)
-	open var lastName: String? = null,
+	var lastName: String? = null,
 
 	@Column(name = "middle_name", nullable = true)
-	open var middleName: String? = null,
+	var middleName: String? = null,
 
 	@Column(name = "date_birth", nullable = true)
-	open var dateBirth: LocalDate? = null,
+	var dateBirth: LocalDate? = null,
 
 	@Column(name = "receipt_date", nullable = true)
-	open var receiptDate: LocalDate? = null,
+	var receiptDate: LocalDate? = null,
 
 	@Column(name = "university_name", nullable = true)
-	open var universityName: String? = null,
+	var universityName: String? = null,
 
 	@Column(name = "course_title", nullable = true)
-	open var courseTitle: String? = null,
+	var courseTitle: String? = null,
 
 	@Column(name = "course_number", nullable = true)
-	open var courseNumber: Int? = null,
+	var courseNumber: Int? = null,
 
 	@Column(name = "average_grade", nullable = true)
-	open var averageGrade: Double? = null,
+	var averageGrade: Double? = null,
 	/** Form of study: full-time/part-time*/
 	@Column(name = "study_form", nullable = true)
-	open var studyForm: String? = null,
+	var studyForm: String? = null,
 	/** Form of education: budget/contract/targeted */
 	@Column(name = "education_form", nullable = true)
-	open var educationForm: String? = null,
+	var educationForm: String? = null,
 
 	@Column(name = "type_high_education", nullable = true)
-	open var typeHighEducation: String? = null,
+	var typeHighEducation: String? = null,
 
 	@Column(name = "stipend_availability", nullable = true)
-	open var stipendAvailability: Boolean? = null,
+	var stipendAvailability: Boolean? = null,
 
 	@Column(name = "local_resident", nullable = true)
-	open var localResident: Boolean? = null,
+	var localResident: Boolean? = null,
 ) {
 	override fun equals(other: Any?): Boolean {
 		if (this === other) return true
