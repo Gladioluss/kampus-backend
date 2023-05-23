@@ -5,15 +5,23 @@ import com.example.kampusbackend.entity.StudentEntity
 import com.example.kampusbackend.exception.DynamicProgressNotFoundException
 import com.example.kampusbackend.exception.StudentNotFoundException
 import com.example.kampusbackend.repository.DynamicProgressRepository
+import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.stereotype.Service
+import java.time.LocalDate
+import kotlin.jvm.Throws
 
 @Service
 class DynamicProgressEntityService(
 	private val dynamicProgressRepository: DynamicProgressRepository
 ) {
-	fun getStudentById(id: Long): DynamicProgressEntity = dynamicProgressRepository.findById(id).orElseThrow {
-		DynamicProgressNotFoundException("Student with id $id not found")
-	}
-
 	fun getAllDynamicProgress(): List<DynamicProgressEntity> = dynamicProgressRepository.findAll()
+
+	fun getDynamicProgressByDate(date: LocalDate): DynamicProgressEntity {
+		try {
+			return dynamicProgressRepository.findByProgressDate(date)
+		}
+		catch (e: EmptyResultDataAccessException) {
+			throw DynamicProgressNotFoundException("It was not possible to find statistics for $date")
+		}
+	}
 }

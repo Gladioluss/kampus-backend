@@ -1,5 +1,6 @@
 package com.example.kampusbackend.entity
 
+import com.example.kampusbackend.exception.DynamicProgressNotFoundException
 import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.persistence.*
 import org.hibernate.Hibernate
