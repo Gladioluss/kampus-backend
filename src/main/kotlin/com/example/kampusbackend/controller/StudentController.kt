@@ -1,5 +1,6 @@
 package com.example.kampusbackend.controller
 
+import com.example.kampusbackend.dto.StudentDataDto
 import com.example.kampusbackend.dto.StudentDto
 import com.example.kampusbackend.dto.toEntity
 import com.example.kampusbackend.entity.StudentEntity
@@ -42,7 +43,7 @@ class StudentController(
 		description = "Получить количество людей для каждого университета"
 	)
 	@GetMapping("/getInfoUniversities")
-	fun getInfoUniversities(): Map<String, Int> = studentEntityService.getInfoUniversities()
+	fun getInfoUniversities(): MutableList<StudentDataDto> = studentEntityService.getInfoUniversities()
 
 	@SecurityRequirement(name = "JWT")
 	@Operation(
@@ -50,7 +51,7 @@ class StudentController(
 		description = "Получить количество людей для каждой формы обучения (бюджет/контракт)"
 	)
 	@GetMapping("/getInfoEducationForm")
-	fun getInfoEducationForm(): Map<String, Int> = studentEntityService.getInfoEducationForm()
+	fun getInfoEducationForm(): MutableList<StudentDataDto> = studentEntityService.getInfoEducationForm()
 
 	@SecurityRequirement(name = "JWT")
 	@Operation(
@@ -58,7 +59,7 @@ class StudentController(
 		description = "Получить количество людей для каждого вида высшего образования"
 	)
 	@GetMapping("/getInfoHighEducation")
-	fun getInfoHighEducation(): Map<String, Int> = studentEntityService.getInfoHighEducation()
+	fun getInfoHighEducation(): MutableList<StudentDataDto> = studentEntityService.getInfoHighEducation()
 
 	@SecurityRequirement(name = "JWT")
 	@Operation(
@@ -66,7 +67,7 @@ class StudentController(
 		description = "Получить количество людей для каждого направления обучения"
 	)
 	@GetMapping("/getInfoCourseTitle")
-	fun getInfoCourseTitle(): Map<String, Int> = studentEntityService.getInfoCourseTitle()
+	fun getInfoCourseTitle(): MutableList<StudentDataDto> = studentEntityService.getInfoCourseTitle()
 
 	@SecurityRequirement(name = "JWT")
 	@Operation(
@@ -76,11 +77,11 @@ class StudentController(
 	@GetMapping("/getAllData")
 	fun getAllData(): String {
 		val data = arrayListOf(
-			studentEntityService.getCountStudents(),
-			studentEntityService.getInfoUniversities(),
-			studentEntityService.getInfoEducationForm(),
-			studentEntityService.getInfoHighEducation(),
-			studentEntityService.getInfoCourseTitle()
+			getCountStudents(),
+			getInfoUniversities(),
+			getInfoEducationForm(),
+			getInfoHighEducation(),
+			getInfoCourseTitle()
 		)
 		val objectMapper = ObjectMapper().apply {
 			registerModule(JavaTimeModule())

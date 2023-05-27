@@ -1,5 +1,6 @@
 package com.example.kampusbackend.service
 
+import com.example.kampusbackend.dto.StudentDataDto
 import com.example.kampusbackend.entity.StudentEntity
 import com.example.kampusbackend.exception.StudentNotFoundException
 import com.example.kampusbackend.repository.StudentRepository
@@ -26,13 +27,13 @@ class StudentEntityService(
 
 	fun getCountStudents(): Long = studentRepository.count()
 
-	fun getInfoUniversities(): Map<String, Int> = groupingBy(studentRepository.getAllUniversities())
+	fun getInfoUniversities(): MutableList<StudentDataDto> = groupingBy(studentRepository.getAllUniversities())
 
-	fun getInfoEducationForm(): Map<String, Int> = groupingBy(studentRepository.getAllEducationForm())
+	fun getInfoEducationForm(): MutableList<StudentDataDto> = groupingBy(studentRepository.getAllEducationForm())
 
-	fun getInfoHighEducation(): Map<String, Int> = groupingBy(studentRepository.getAllTypeHighEducation())
+	fun getInfoHighEducation(): MutableList<StudentDataDto> = groupingBy(studentRepository.getAllTypeHighEducation())
 
-	fun getInfoCourseTitle(): Map<String, Int> = groupingBy(studentRepository.getAllCourseTitle())
+	fun getInfoCourseTitle(): MutableList<StudentDataDto> = groupingBy(studentRepository.getAllCourseTitle())
 
 	/**
 	 * Save an object of type [StudentEntity] to the database.
@@ -41,5 +42,12 @@ class StudentEntityService(
 		studentRepository.save(studentEntity)
 	}
 
-	private fun groupingBy(data: List<String>): Map<String, Int> = data.groupingBy { it }.eachCount()
+
+	private fun groupingBy(data: List<String>): MutableList<StudentDataDto> {
+		val list = mutableListOf<StudentDataDto>()
+		data.groupingBy { it }.eachCount().forEach { entry ->
+			list.add(StudentDataDto(entry.key, entry.value.toString()))
+		}
+		return list
+	}
 }
