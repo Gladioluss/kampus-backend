@@ -1,7 +1,10 @@
 package com.example.kampusbackend.service
 
 import com.example.kampusbackend.dto.StudentDataDto
+import com.example.kampusbackend.dto.StudentDto
+import com.example.kampusbackend.dto.toEntity
 import com.example.kampusbackend.entity.StudentEntity
+import com.example.kampusbackend.entity.update
 import com.example.kampusbackend.exception.StudentNotFoundException
 import com.example.kampusbackend.repository.StudentRepository
 import org.springframework.stereotype.Service
@@ -20,6 +23,7 @@ class StudentEntityService(
 	fun getStudentById(id: Long): StudentEntity = studentRepository.findById(id).orElseThrow {
 		StudentNotFoundException("Student with id $id not found")
 	}
+
 	/**
 	 * Return a list of all instances of type [StudentEntity] from the database.
 	 */
@@ -42,12 +46,20 @@ class StudentEntityService(
 		studentRepository.save(studentEntity)
 	}
 
-
 	private fun groupingBy(data: List<String>): MutableList<StudentDataDto> {
 		val list = mutableListOf<StudentDataDto>()
 		data.groupingBy { it }.eachCount().forEach { entry ->
 			list.add(StudentDataDto(entry.key, entry.value.toString()))
 		}
 		return list
+	}
+
+	fun updateStudent(id: Long, data: StudentDto) {
+		val student = getStudentById(id)
+		studentRepository.save(student.update(data))
+	}
+
+	fun deleteStudentById(studentId: Long) {
+		studentRepository.deleteById(studentId)
 	}
 }

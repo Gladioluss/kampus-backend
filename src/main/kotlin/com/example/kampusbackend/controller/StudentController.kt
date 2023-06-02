@@ -98,4 +98,24 @@ class StudentController(
 			"Student successfully added to the table"
 		)
 	}
+
+	@SecurityRequirement(name = "JWT")
+	@Operation(
+		summary = "Удалить данные",
+		description = "Удаляет студента по его id"
+	)
+	@PostMapping("/deleteStudent/{studentId}")
+	fun deleteStudentById(@PathVariable studentId: Long) {
+		studentEntityService.deleteStudentById(studentId)
+	}
+
+	@SecurityRequirement(name = "JWT")
+	@Operation(
+		summary = "Обновить данные",
+		description = "Обновляет данные студента по его id"
+	)
+	@PostMapping("/updateStudent/{studentId}")
+	fun updateStudentById(@PathVariable studentId: Long, @RequestBody studentDto: StudentDto) {
+		studentEntityService.updateStudent(studentId, studentDto)
+	}
 }

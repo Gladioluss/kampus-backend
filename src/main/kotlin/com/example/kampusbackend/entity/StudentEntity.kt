@@ -1,5 +1,6 @@
 package com.example.kampusbackend.entity
 
+import com.example.kampusbackend.dto.StudentDto
 import jakarta.persistence.*
 import org.hibernate.Hibernate
 import java.time.LocalDate
@@ -64,8 +65,7 @@ class StudentEntity(
 
 	override fun hashCode(): Int = javaClass.hashCode()
 	override fun toString(): String {
-		return "StudentEntity(" +
-				"id=$id, " +
+		return	"id=$id, " +
 				"firstName=$firstName, " +
 				"lastName=$lastName, " +
 				"middleName=$middleName, " +
@@ -79,7 +79,23 @@ class StudentEntity(
 				"educationForm=$educationForm, " +
 				"typeHighEducation=$typeHighEducation, " +
 				"stipendAvailability=$stipendAvailability, " +
-				"localResident=$localResident)"
+				"localResident=$localResident"
 	}
+}
 
+fun StudentEntity.update(data: StudentDto) = apply {
+	firstName = data.firstName ?: firstName
+	lastName = data.lastName ?: lastName
+	middleName = data.middleName ?: middleName
+	dateBirth = data.dateBirth ?: dateBirth
+	receiptDate = data.receiptDate ?: receiptDate
+	universityName = data.universityName ?: universityName
+	courseTitle = data.courseTitle ?: courseTitle
+	courseNumber = data.courseNumber ?: courseNumber
+	averageGrade = data.averageGrade ?: averageGrade
+	studyForm = data.studyForm ?: studyForm
+	educationForm = data.educationForm ?: educationForm
+	typeHighEducation = data.typeHighEducation ?: typeHighEducation
+	stipendAvailability = data.stipendAvailability ?: stipendAvailability
+	localResident = data.localResident ?: localResident
 }

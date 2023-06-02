@@ -63,7 +63,8 @@ class WebSecurityConfig(
 	@Bean
 	fun corsConfigurationSource(): CorsConfigurationSource {
 		val configuration = CorsConfiguration().apply {
-			allowedOrigins = listOf("http://localhost:5173", "http://95.163.241.71:5173")
+			allowedOrigins = listOf("http://localhost:5173", "http://95.163.241.71:5173",
+				"https://bbadl60abq0f2c6oo4en.containers.yandexcloud.net", "https://kampus-bucket.website.yandexcloud.net")
 			allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "OPTIONS")
 			allowedHeaders = listOf("*")
 			allowCredentials = true
