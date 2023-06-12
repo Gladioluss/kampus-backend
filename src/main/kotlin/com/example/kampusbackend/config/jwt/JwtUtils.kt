@@ -21,7 +21,6 @@ class JwtUtils {
 
     fun generateJwtToken(authentication: Authentication): String {
         val userPrincipal: User = authentication.principal as User
-        logger.debug { "Generating JWT token" }
         val expirationTimeMillis = Date().time + jwtExpiration.toLong()
         val expirationDate = Date(expirationTimeMillis)
         return Jwts.builder()

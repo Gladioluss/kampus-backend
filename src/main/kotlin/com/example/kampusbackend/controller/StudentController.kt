@@ -1,6 +1,6 @@
 package com.example.kampusbackend.controller
 
-import com.example.kampusbackend.dto.StudentDataDto
+import com.example.kampusbackend.dto.response.StudentDataDto
 import com.example.kampusbackend.dto.StudentDto
 import com.example.kampusbackend.dto.toEntity
 import com.example.kampusbackend.entity.StudentEntity
@@ -93,7 +93,7 @@ class StudentController(
 	@Operation(summary = "Сохранение данных о студентах", description = "Сохранение данных о студентах")
 	@PostMapping("/saveStudent")
 	fun saveStudent(@RequestBody studentDto: StudentDto): ResponseEntity<String> {
-		studentEntityService.save(studentDto.toEntity())
+		studentEntityService.saveStudent(studentDto.toEntity())
 		return ResponseEntity.ok(
 			"Student successfully added to the table"
 		)

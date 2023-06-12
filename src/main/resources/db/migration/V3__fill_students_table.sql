@@ -1,5 +1,7 @@
 insert into ${flyway:defaultSchema}.students values (
     1,
+    'emurashin',
+    '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
     'Данил',
     'Емурашин',
     'Евгеньевич',
@@ -18,6 +20,8 @@ insert into ${flyway:defaultSchema}.students values (
 
 insert into ${flyway:defaultSchema}.students values (
     2,
+    'emurashin2',
+    '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
     'Григорий',
     'Друженьков',
     'Владимирович',
@@ -36,6 +40,8 @@ insert into ${flyway:defaultSchema}.students values (
 
 insert into ${flyway:defaultSchema}.students values (
     3,
+    'emurashin3',
+    '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
     'Чуриков',
     'Ярослав',
     'Игоревич',
@@ -54,6 +60,8 @@ insert into ${flyway:defaultSchema}.students values (
 
 insert into ${flyway:defaultSchema}.students values (
     4,
+    'emurashin4',
+    '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
     'Иван',
     'Иванов',
     'Иванович',
@@ -72,6 +80,8 @@ insert into ${flyway:defaultSchema}.students values (
 
 insert into ${flyway:defaultSchema}.students values (
     5,
+    'emurashin5',
+    '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
     'Данил',
     'Иванов',
     'Сергеевич',
@@ -90,6 +100,8 @@ insert into ${flyway:defaultSchema}.students values (
 
 insert into ${flyway:defaultSchema}.students values (
     6,
+    'emurashin6',
+    '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
     'Иван',
     'Иванов',
     'Иванович',
@@ -108,6 +120,8 @@ insert into ${flyway:defaultSchema}.students values (
 
 insert into ${flyway:defaultSchema}.students values (
     7,
+    'emurashin7',
+    '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
     'Иван',
     'Иванов',
     'Иванович',
@@ -126,6 +140,8 @@ insert into ${flyway:defaultSchema}.students values (
 
 insert into ${flyway:defaultSchema}.students values (
     8,
+    'emurashin8',
+    '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
     'Иван',
     'Иванов',
     'Иванович',
@@ -144,6 +160,8 @@ insert into ${flyway:defaultSchema}.students values (
 
 insert into ${flyway:defaultSchema}.students values (
     9,
+    'emurashin9',
+    '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
     'Иван',
     'Иванов',
     'Иванович',
@@ -162,6 +180,8 @@ insert into ${flyway:defaultSchema}.students values (
 
 insert into ${flyway:defaultSchema}.students values (
     10,
+    'emurashin10',
+    '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
     'Иван',
     'Иванов',
     'Иванович',
@@ -177,6 +197,10 @@ insert into ${flyway:defaultSchema}.students values (
     false,
     false
 );
+
+insert into ${flyway:defaultSchema}.hrs values (1, 'user1', '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO');
+insert into ${flyway:defaultSchema}.hrs values (2, 'user2', '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO');
+insert into ${flyway:defaultSchema}.hrs values (3, 'user3', '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO');
 
 insert into ${flyway:defaultSchema}.dynamic_progress values (1, '2023-02-01', 17, 15011);
 insert into ${flyway:defaultSchema}.dynamic_progress values (2, '2023-03-01', 95, 1501518);

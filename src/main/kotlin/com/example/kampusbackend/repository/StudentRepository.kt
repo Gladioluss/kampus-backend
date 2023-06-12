@@ -2,15 +2,15 @@ package com.example.kampusbackend.repository
 
 import com.example.kampusbackend.entity.StudentEntity
 import org.springframework.data.jpa.repository.JpaRepository
-import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
-import org.springframework.data.repository.query.Param
+import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Repository
-import org.springframework.transaction.annotation.Transactional
-import java.time.LocalDate
+import java.util.*
 
 @Repository
 interface StudentRepository : JpaRepository<StudentEntity, Long> {
+
+	fun findByUsername(username: String): StudentEntity?
 
 	@Query("SELECT universityName FROM StudentEntity")
 	fun getAllUniversities(): List<String>
@@ -26,4 +26,5 @@ interface StudentRepository : JpaRepository<StudentEntity, Long> {
 
 	override fun deleteById(studentId: Long)
 
+	fun existsByUsername(username: String): Boolean
 }

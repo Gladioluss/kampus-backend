@@ -14,6 +14,12 @@ class StudentEntity(
 	@Column(name = "students_id", nullable = false)
 	var id: Long? = null,
 
+	@Column(name = "username", nullable = false, unique = true)
+	var username: String? = null,
+
+	@Column(name = "password", nullable = false)
+	var password: String? = null,
+
 	@Column(name = "first_name", nullable = true)
 	var firstName: String? = null,
 
@@ -55,6 +61,7 @@ class StudentEntity(
 
 	@Column(name = "local_resident", nullable = true)
 	var localResident: Boolean? = null,
+
 ) {
 	override fun equals(other: Any?): Boolean {
 		if (this === other) return true

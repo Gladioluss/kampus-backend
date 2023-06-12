@@ -1,4 +1,4 @@
-package com.example.kampusbackend.dto
+package com.example.kampusbackend.dto.response
 
 data class StudentDataDto(
 	val name: String,

@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3.8'
 
 services:
   database:
@@ -27,3 +27,16 @@ services:
       - JWT_EXPIRATION=${JWT_EXPIRATION}
     ports:
       - "8080:8080"
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: caddy
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./dist:/var/www/frontend:ro
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - backend
+

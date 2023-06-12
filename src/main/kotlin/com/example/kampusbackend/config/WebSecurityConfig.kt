@@ -32,7 +32,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 class WebSecurityConfig(
 	private val jwtUtils: JwtUtils,
 	private val customUserDetails: CustomUserDetails,
-	private val unauthorizedHandler: AuthEntryPointJwt,
+	private val authEntryPointJwt: AuthEntryPointJwt,
 ) {
 
 	@Value("\${swagger.securitySchemeName}")
@@ -46,7 +46,7 @@ class WebSecurityConfig(
 		http.invoke {
 			csrf { disable() }
 			cors { }
-			exceptionHandling { authenticationEntryPoint = unauthorizedHandler }
+			exceptionHandling { authenticationEntryPoint = authEntryPointJwt }
 			authorizeRequests {
 				authorize("api/v1/auth/**", permitAll)
 //				authorize("api/v1/api-docs/**", permitAll)
@@ -63,10 +63,16 @@ class WebSecurityConfig(
 	@Bean
 	fun corsConfigurationSource(): CorsConfigurationSource {
 		val configuration = CorsConfiguration().apply {
-			allowedOrigins = listOf("http://localhost:5173", "http://95.163.241.71:5173",
-				"https://bbadl60abq0f2c6oo4en.containers.yandexcloud.net", "https://kampus-bucket.website.yandexcloud.net")
+			allowedOrigins = listOf(
+				"http://localhost:5173", "http://95.163.241.71:5173",
+				"http://localhost:80", "http://localhost",
+				"http://51.250.20.57:8080",
+				"https://localhost:5173", "https://95.163.241.71:5173",
+				"https://localhost:80", "https://localhost",
+				"https://51.250.20.57:8080", "https://trustee-kampus.ru",
+				"http://51.250.20.57","http://51.250.20.57:80","http://51.250.20.57:8080" )
 			allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "OPTIONS")
-			allowedHeaders = listOf("*")
+			allowedHeaders = listOf("Authorization", "Cache-Control", "Content-Type")
 			allowCredentials = true
 			maxAge = 3600
 		}
