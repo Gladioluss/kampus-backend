@@ -1,10 +1,12 @@
 package com.example.kampusbackend.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import jakarta.persistence.*
 import org.hibernate.Hibernate
 
 @Entity
 @Table(name = "internship_card")
+@JsonIgnoreProperties("hr")
 class InternshipCardEntity(
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
