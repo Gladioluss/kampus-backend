@@ -29,18 +29,17 @@ class CustomUserDetails(
 		if (username == this.username)
 			return buildUser(this.username, this.password, ERole.TRUSTEE.name)
 
-		val student: StudentEntity? = studentEntityService.getStudentByUsername(username)
-		when {
-			student != null -> {
-				return buildUser(student.username, student.password, ERole.STUDENT.name)
-			}
-			else -> {
-				val hr : HrEntity? = hrEntityService.getHrByUsername(username)
-				if (hr != null) {
-					return buildUser(hr.username, hr.password, ERole.HR.name)
-				}
-			}
+		val student: StudentEntity?
+		try {
+			student = studentEntityService.getStudentByUsername(username)
+			return buildUser(student?.username, student?.password, ERole.STUDENT.name)
+		}catch (e : Exception){}
+
+		val hr : HrEntity? = hrEntityService.getHrByUsername(username)
+		if (hr != null) {
+			return buildUser(hr.username, hr.password, ERole.HR.name)
 		}
+
 		throw UsernameNotFoundException("User Not Found with username: $username")
 	}
 

@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class InternshipCardDto(
 	var internshipTitle: String,
 	var organizationName: String,
+	var internshipShortDescription: String,
 	var internshipDescription: String,
 	var internshipSpecialization: String,
 	var internshipSchedule: String,
@@ -17,6 +18,7 @@ data class InternshipCardDto(
 fun InternshipCardDto.toEntity(hr: HrEntity) = InternshipCardEntity(
 	internshipTitle = internshipTitle,
 	organizationName = organizationName,
+	internshipShortDescription = internshipShortDescription,
 	internshipDescription = internshipDescription,
 	internshipSpecialization = internshipSpecialization,
 	internshipSchedule= internshipSchedule,
