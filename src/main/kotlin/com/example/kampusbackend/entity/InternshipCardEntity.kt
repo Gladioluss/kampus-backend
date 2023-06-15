@@ -19,7 +19,6 @@ class InternshipCardEntity(
 	@Column(name = "organization_name", nullable = false)
 	var organizationName: String? = null,
 
-
 	@Column(name = "internship_short_description", nullable = false)
 	var internshipShortDescription: String? = null,
 

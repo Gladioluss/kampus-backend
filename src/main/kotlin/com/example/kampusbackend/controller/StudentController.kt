@@ -28,6 +28,11 @@ class StudentController(
 	fun getStudentById(@PathVariable studentId: Long): StudentEntity = studentEntityService.getStudentById(studentId)
 
 	@SecurityRequirement(name = "JWT")
+	@Operation(summary = "Получить пользователя по username", description = "Получить пользователя по username")
+	@GetMapping("/getStudent/{username}")
+	fun getStudentByUsername(@PathVariable username: String): StudentEntity? = studentEntityService.getStudentByUsername(username)
+
+	@SecurityRequirement(name = "JWT")
 	@Operation(summary = "Получить список всех студентов", description = "Получить список всех студентов")
 	@GetMapping("/getAllStudents")
 	fun getAllStudents(): List<StudentEntity> = studentEntityService.getAllStudents()
