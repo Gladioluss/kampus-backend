@@ -2,6 +2,8 @@ insert into ${flyway:defaultSchema}.students values (
     1,
     'emurashin',
     '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
+    'emurashin1@gmail.com',
+    '+71111111111',
     'Данил',
     'Емурашин',
     'Евгеньевич',
@@ -15,13 +17,16 @@ insert into ${flyway:defaultSchema}.students values (
     'Бюджет',
     'Бакалавриат',
     true,
-    true
+    true,
+    'ighrhgerhg'
 );
 
 insert into ${flyway:defaultSchema}.students values (
     2,
     'emurashin2',
     '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
+    'emurashin2@gmail.com',
+    '+71111111111',
     'Григорий',
     'Друженьков',
     'Владимирович',
@@ -35,13 +40,16 @@ insert into ${flyway:defaultSchema}.students values (
     'Бюджет',
     'Бакалавриат',
     true,
-    false
+    false,
+    'ighrhgerhg'
 );
 
 insert into ${flyway:defaultSchema}.students values (
     3,
     'emurashin3',
     '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
+    'emurashin3@gmail.com',
+    '+71111111111',
     'Чуриков',
     'Ярослав',
     'Игоревич',
@@ -55,13 +63,16 @@ insert into ${flyway:defaultSchema}.students values (
     'Контракт',
     'Аспирантура',
     true,
-    true
+    true,
+    'ighrhgerhg'
 );
 
 insert into ${flyway:defaultSchema}.students values (
     4,
     'emurashin4',
     '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
+    'emurashin4@gmail.com',
+    '+71111111111',
     'Иван',
     'Иванов',
     'Иванович',
@@ -75,13 +86,16 @@ insert into ${flyway:defaultSchema}.students values (
     'Бюджет',
     'Специалитет',
     false,
-    false
+    false,
+    'ighrhgerhg'
 );
 
 insert into ${flyway:defaultSchema}.students values (
     5,
     'emurashin5',
     '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
+    'emurashin5@gmail.com',
+    '+71111111111',
     'Данил',
     'Иванов',
     'Сергеевич',
@@ -95,13 +109,16 @@ insert into ${flyway:defaultSchema}.students values (
     'Бюджет',
     'Специалитет',
     false,
-    false
+    false,
+    'ighrhgerhg'
 );
 
 insert into ${flyway:defaultSchema}.students values (
     6,
     'emurashin6',
     '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
+    'emurashin6@gmail.com',
+    '+71111111111',
     'Иван',
     'Иванов',
     'Иванович',
@@ -115,13 +132,16 @@ insert into ${flyway:defaultSchema}.students values (
     'Бюджет',
     'Специалитет',
     false,
-    false
+    false,
+    'ighrhgerhg'
 );
 
 insert into ${flyway:defaultSchema}.students values (
     7,
     'emurashin7',
     '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
+    'emurashin7@gmail.com',
+    '+71111111111',
     'Иван',
     'Иванов',
     'Иванович',
@@ -135,13 +155,16 @@ insert into ${flyway:defaultSchema}.students values (
     'Бюджет',
     'Специалитет',
     false,
-    false
+    false,
+    'ighrhgerhg'
 );
 
 insert into ${flyway:defaultSchema}.students values (
     8,
     'emurashin8',
     '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
+    'emurashin8@gmail.com',
+    '+71111111111',
     'Иван',
     'Иванов',
     'Иванович',
@@ -155,13 +178,16 @@ insert into ${flyway:defaultSchema}.students values (
     'Бюджет',
     'Специалитет',
     false,
-    false
+    false,
+    'ighrhgerhg'
 );
 
 insert into ${flyway:defaultSchema}.students values (
     9,
     'emurashin9',
     '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
+    'emurashi9n@gmail.com',
+    '+71111111111',
     'Иван',
     'Иванов',
     'Иванович',
@@ -175,13 +201,16 @@ insert into ${flyway:defaultSchema}.students values (
     'Бюджет',
     'Специалитет',
     false,
-    false
+    false,
+    'ighrhgerhg'
 );
 
 insert into ${flyway:defaultSchema}.students values (
     10,
     'emurashin10',
     '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
+    'emurashin10@gmail.com',
+    '+71111111111',
     'Иван',
     'Иванов',
     'Иванович',
@@ -195,12 +224,25 @@ insert into ${flyway:defaultSchema}.students values (
     'Бюджет',
     'Специалитет',
     false,
-    false
+    false,
+    'ighrhgerhg'
 );
 
-insert into ${flyway:defaultSchema}.hrs values (1, 'user1', '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO');
-insert into ${flyway:defaultSchema}.hrs values (2, 'user2', '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO');
-insert into ${flyway:defaultSchema}.hrs values (3, 'user3', '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO');
+insert into ${flyway:defaultSchema}.hrs values (
+    1,
+    'user1',
+    '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
+    'emurashin@gmail.com');
+insert into ${flyway:defaultSchema}.hrs values (
+    2,
+    'user2',
+    '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
+    'emurashin@gmail.com');
+insert into ${flyway:defaultSchema}.hrs values (
+    3,
+    'user3',
+    '$2a$12$K.D09G02MwcvYTaaRHCCQuMwbd8s5pbOc4cpgheP/S8AuHdyEmKnO',
+    'emurashin@gmail.com');
 
 insert into ${flyway:defaultSchema}.dynamic_progress values (1, '2023-02-01', 17, 15011);
 insert into ${flyway:defaultSchema}.dynamic_progress values (2, '2023-03-01', 95, 1501518);

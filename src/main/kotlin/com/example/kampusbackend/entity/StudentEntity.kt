@@ -20,6 +20,12 @@ class StudentEntity(
 	@Column(name = "password", nullable = false)
 	var password: String? = null,
 
+	@Column(name = "email", nullable = false)
+	var email: String? = null,
+
+	@Column(name = "phone_number", nullable = false)
+	var phoneNumber: String? = null,
+
 	@Column(name = "first_name", nullable = true)
 	var firstName: String? = null,
 
@@ -61,6 +67,9 @@ class StudentEntity(
 
 	@Column(name = "local_resident", nullable = true)
 	var localResident: Boolean? = null,
+
+	@Column(name = "about", nullable = true)
+	var about: String? = null,
 
 ) {
 	override fun equals(other: Any?): Boolean {
@@ -105,4 +114,5 @@ fun StudentEntity.update(data: StudentDto) = apply {
 	typeHighEducation = data.typeHighEducation ?: typeHighEducation
 	stipendAvailability = data.stipendAvailability ?: stipendAvailability
 	localResident = data.localResident ?: localResident
+	about = data.about ?: about
 }

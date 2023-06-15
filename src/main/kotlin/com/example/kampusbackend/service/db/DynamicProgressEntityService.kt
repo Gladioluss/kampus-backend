@@ -1,4 +1,4 @@
-package com.example.kampusbackend.service
+package com.example.kampusbackend.service.db
 
 import com.example.kampusbackend.entity.DynamicProgressEntity
 import com.example.kampusbackend.exception.DynamicProgressNotFoundException

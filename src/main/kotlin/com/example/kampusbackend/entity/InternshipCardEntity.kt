@@ -33,7 +33,10 @@ class InternshipCardEntity(
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "hrs_id")
-	var hr: HrEntity
+	var hr: HrEntity,
+
+	@Column(name = "hr_email", nullable = false)
+	var hrEmail: String? = hr.email,
 ) {
 	override fun equals(other: Any?): Boolean {
 		if (this === other) return true

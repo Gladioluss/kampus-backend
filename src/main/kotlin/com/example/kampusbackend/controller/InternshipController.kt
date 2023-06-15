@@ -1,11 +1,15 @@
 package com.example.kampusbackend.controller
 
 import com.example.kampusbackend.dto.InternshipCardDto
+import com.example.kampusbackend.dto.ReplyInternshipDto
 import com.example.kampusbackend.dto.toEntity
 import com.example.kampusbackend.entity.HrEntity
 import com.example.kampusbackend.entity.InternshipCardEntity
-import com.example.kampusbackend.service.HrEntityService
-import com.example.kampusbackend.service.InternshipCardEntityService
+import com.example.kampusbackend.entity.StudentEntity
+import com.example.kampusbackend.service.MailSenderService
+import com.example.kampusbackend.service.db.HrEntityService
+import com.example.kampusbackend.service.db.InternshipCardEntityService
+import com.example.kampusbackend.service.db.StudentEntityService
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import io.swagger.v3.oas.annotations.Operation
@@ -20,6 +24,8 @@ import org.springframework.web.bind.annotation.*
 class InternshipController(
 	private val internshipCardEntityService: InternshipCardEntityService,
 	private val hrEntityService: HrEntityService,
+	private val mailSenderService: MailSenderService,
+	private val studentEntityService: StudentEntityService,
 ) {
 	val objectMapper = ObjectMapper().apply {
 		registerModule(JavaTimeModule())
@@ -60,7 +66,16 @@ class InternshipController(
 		return objectMapper.writeValueAsString(hrEntityService.getAllInternshipsByUsername(username))
 	}
 
-	private fun createInternship(hr: HrEntity?, internshipCardDto: InternshipCardDto){
+	@Operation(summary = "Откликнуться на стажировку")
+	@SecurityRequirement(name = "JWT")
+	@PostMapping("/replyInternship")
+	fun replyInternship(@RequestBody replyInternshipDto: ReplyInternshipDto) {
+		val internshipCard : InternshipCardEntity? = internshipCardEntityService.getInternshipCardById(replyInternshipDto.internshipID)
+		val student: StudentEntity? = studentEntityService.getStudentByUsername(replyInternshipDto.studentUsername)
+		mailSenderService.sendMail(internshipCard!!, student!!)
+	}
+
+	private fun createInternship(hr: HrEntity?, internshipCardDto: InternshipCardDto) {
 		hr?.let {
 			val internshipCardEntity: InternshipCardEntity = internshipCardDto.toEntity(hr)
 			hr.addNewInternshipCard(internshipCardEntity)

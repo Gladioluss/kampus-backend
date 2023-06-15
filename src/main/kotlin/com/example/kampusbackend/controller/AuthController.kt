@@ -7,8 +7,8 @@ import com.example.kampusbackend.dto.request.SignupRequest
 import com.example.kampusbackend.entity.HrEntity
 import com.example.kampusbackend.entity.StudentEntity
 import com.example.kampusbackend.exception.ErrorMessageModel
-import com.example.kampusbackend.service.HrEntityService
-import com.example.kampusbackend.service.StudentEntityService
+import com.example.kampusbackend.service.db.HrEntityService
+import com.example.kampusbackend.service.db.StudentEntityService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.beans.factory.annotation.Value
@@ -17,7 +17,6 @@ import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping

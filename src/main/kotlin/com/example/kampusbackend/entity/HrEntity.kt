@@ -21,6 +21,9 @@ class HrEntity(
 	@Column(name = "password", nullable = false)
 	var password: String? = null,
 
+	@Column(name = "email", nullable = false)
+	var email: String? = null,
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "hr", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, orphanRemoval = true)
 	var internshipCards: MutableList<InternshipCardEntity> = mutableListOf(),
@@ -42,4 +45,5 @@ class HrEntity(
 fun HrEntity.update(data: HrDto) = apply {
 	username = data.username ?: username
 	password = data.password ?: password
+	email = data.email ?: email
 }

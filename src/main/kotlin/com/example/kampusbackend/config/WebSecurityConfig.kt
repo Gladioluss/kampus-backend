@@ -12,6 +12,8 @@ import io.swagger.v3.oas.models.security.SecurityScheme
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.mail.javamail.JavaMailSender
+import org.springframework.mail.javamail.JavaMailSenderImpl
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -37,6 +39,18 @@ class WebSecurityConfig(
 
 	@Value("\${swagger.securitySchemeName}")
 	private lateinit var securitySchemeName: String
+
+	@Value("\${spring.mail.host}")
+	private lateinit var hostsProperties: String
+
+	@Value("\${spring.mail.port}")
+	private var portProperties: Int = 0
+
+	@Value("\${spring.mail.username}")
+	private lateinit var usernameProperties: String
+
+	@Value("\${spring.mail.password}")
+	private lateinit var passwordProperties: String
 
 	@Bean
 	fun authenticationJwtTokenFilter() = AuthTokenFilter(jwtUtils, customUserDetails)
@@ -85,6 +99,22 @@ class WebSecurityConfig(
 	@Bean
 	fun authenticationManager(authenticationConfiguration: AuthenticationConfiguration): AuthenticationManager =
 		authenticationConfiguration.authenticationManager
+
+	@Bean
+	fun getJavaMailSender(): JavaMailSender? {
+		val mailSender = JavaMailSenderImpl().apply {
+			host = hostsProperties
+			port = portProperties
+			username = usernameProperties
+			password = passwordProperties
+			val props = javaMailProperties
+			props["mail.transport.protocol"] = "smtp"
+			props["mail.smtp.auth"] = "true"
+			props["mail.smtp.starttls.enable"] = "true"
+		}
+
+		return mailSender
+	}
 
 	@Bean
 	fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()

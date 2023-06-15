@@ -22,4 +22,5 @@ fun InternshipCardDto.toEntity(hr: HrEntity) = InternshipCardEntity(
 	internshipSchedule= internshipSchedule,
 	internshipType = internshipType,
 	hr = hr,
+	hrEmail = hr.email,
 )

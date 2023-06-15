@@ -3,8 +3,8 @@ package com.example.kampusbackend.config
 import com.example.kampusbackend.entity.ERole
 import com.example.kampusbackend.entity.HrEntity
 import com.example.kampusbackend.entity.StudentEntity
-import com.example.kampusbackend.service.HrEntityService
-import com.example.kampusbackend.service.StudentEntityService
+import com.example.kampusbackend.service.db.HrEntityService
+import com.example.kampusbackend.service.db.StudentEntityService
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails

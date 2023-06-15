@@ -4,7 +4,7 @@ import com.example.kampusbackend.dto.response.StudentDataDto
 import com.example.kampusbackend.dto.StudentDto
 import com.example.kampusbackend.dto.toEntity
 import com.example.kampusbackend.entity.StudentEntity
-import com.example.kampusbackend.service.StudentEntityService
+import com.example.kampusbackend.service.db.StudentEntityService
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import io.swagger.v3.oas.annotations.Operation

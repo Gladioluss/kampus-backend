@@ -1,4 +1,4 @@
-package com.example.kampusbackend.service
+package com.example.kampusbackend.service.db
 
 import com.example.kampusbackend.entity.HrEntity
 import com.example.kampusbackend.entity.InternshipCardEntity

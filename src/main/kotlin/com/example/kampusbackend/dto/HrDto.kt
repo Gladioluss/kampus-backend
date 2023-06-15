@@ -8,9 +8,11 @@ import jakarta.persistence.Column
 data class HrDto(
 	var username: String,
 	var password: String,
+	var email: String,
 )
 
 fun HrDto.toEntity() = HrEntity(
 	username = username,
 	password = password,
+	email = email,
 )

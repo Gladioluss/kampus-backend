@@ -27,6 +27,7 @@ data class StudentDto(
 	var stipendAvailability: Boolean? = null,
 	@Schema(description = "Показывает, местный ли студент")
 	var localResident: Boolean? = null,
+	var about: String? = null,
 )
 
 fun StudentDto.toEntity() = StudentEntity(
