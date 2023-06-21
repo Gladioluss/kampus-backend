@@ -3,17 +3,8 @@ package com.example.kampusbackend.config
 import com.example.kampusbackend.config.jwt.AuthEntryPointJwt
 import com.example.kampusbackend.config.jwt.AuthTokenFilter
 import com.example.kampusbackend.config.jwt.JwtUtils
-import io.swagger.v3.oas.models.Components
-import io.swagger.v3.oas.models.OpenAPI
-import io.swagger.v3.oas.models.info.Contact
-import io.swagger.v3.oas.models.info.Info
-import io.swagger.v3.oas.models.security.SecurityRequirement
-import io.swagger.v3.oas.models.security.SecurityScheme
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.mail.javamail.JavaMailSender
-import org.springframework.mail.javamail.JavaMailSenderImpl
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -36,21 +27,6 @@ class WebSecurityConfig(
 	private val customUserDetails: CustomUserDetails,
 	private val authEntryPointJwt: AuthEntryPointJwt,
 ) {
-
-	@Value("\${swagger.securitySchemeName}")
-	private lateinit var securitySchemeName: String
-
-	@Value("\${spring.mail.host}")
-	private lateinit var hostsProperties: String
-
-	@Value("\${spring.mail.port}")
-	private var portProperties: Int = 0
-
-	@Value("\${spring.mail.username}")
-	private lateinit var usernameProperties: String
-
-	@Value("\${spring.mail.password}")
-	private lateinit var passwordProperties: String
 
 	@Bean
 	fun authenticationJwtTokenFilter() = AuthTokenFilter(jwtUtils, customUserDetails)
@@ -84,7 +60,8 @@ class WebSecurityConfig(
 				"https://localhost:5173", "https://95.163.241.71:5173",
 				"https://localhost:80", "https://localhost",
 				"https://51.250.20.57:8080", "https://trustee-kampus.ru",
-				"http://51.250.20.57","http://51.250.20.57:80","http://51.250.20.57:8080" )
+				"http://51.250.20.57", "http://51.250.20.57:80", "http://51.250.20.57:8080"
+			)
 			allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "OPTIONS")
 			allowedHeaders = listOf("Authorization", "Cache-Control", "Content-Type")
 			allowCredentials = true
@@ -100,48 +77,9 @@ class WebSecurityConfig(
 	fun authenticationManager(authenticationConfiguration: AuthenticationConfiguration): AuthenticationManager =
 		authenticationConfiguration.authenticationManager
 
-	@Bean
-	fun getJavaMailSender(): JavaMailSender? {
-		val mailSender = JavaMailSenderImpl().apply {
-			host = hostsProperties
-			port = portProperties
-			username = usernameProperties
-			password = passwordProperties
-			val props = javaMailProperties
-			props["mail.transport.protocol"] = "smtp"
-			props["mail.smtp.auth"] = "true"
-			props["mail.smtp.starttls.enable"] = "true"
-		}
-
-		return mailSender
-	}
 
 	@Bean
 	fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
 
-	@Bean
-	fun customizeOpenAPI(): OpenAPI? {
-		return OpenAPI()
-			.addSecurityItem(
-				SecurityRequirement()
-					.addList(securitySchemeName)
-			)
-			.components(
-				Components()
-					.addSecuritySchemes(
-						securitySchemeName, SecurityScheme()
-							.name(securitySchemeName)
-							.type(SecurityScheme.Type.HTTP)
-							.scheme("bearer")
-							.bearerFormat("JWT")
 
-					)
-			).info(
-				Info()
-					.title("Kampus information for trustees api")
-					.description("Kampus information for trustees")
-					.version("1.0.0")
-					.contact(Contact().name("Emurashin Danil"))
-			)
-	}
 }

@@ -1,4 +1,4 @@
-http://51.250.20.57:80 {
+kampus-trustee.ru {
     root * /var/www/frontend
     file_server
     try_files {path} /index.html
@@ -7,3 +7,9 @@ http://51.250.20.57:80 {
     }
 }
 
+api.kampus-trustee.ru {
+    reverse_proxy 51.250.20.57:8080
+    header {
+        -Server
+    }
+}
